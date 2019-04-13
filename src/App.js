@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Layout from "./components/layout";
+import ServiceCard from "./components/service-card";
 
 class App extends Component {
   render() {
     return (
       <Layout>
-        <p>hola</p>
+        <ServiceCard />
       </Layout>
     );
   }
