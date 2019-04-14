@@ -10,7 +10,8 @@ const styles = theme => ({
   text: {
     paddingBottom: 20,
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textTransform: "uppercase"
   },
   appBar: {
     top: "auto",
@@ -30,19 +31,19 @@ const styles = theme => ({
   }
 });
 
-const BottomBar = ({ classes }) => (
+const BottomBar = ({ classes, toggleModal }) => (
   <AppBar position="fixed" color="primary" className={classes.appBar}>
     <Toolbar className={classes.toolbar}>
-      <Fab color="secondary" aria-label="Add" className={classes.fabButton}>
+      <Fab
+        onClick={toggleModal}
+        color="secondary"
+        aria-label="Add"
+        className={classes.fabButton}
+      >
         <AddIcon />
       </Fab>
     </Toolbar>
-    <Typography
-      align="center"
-      variant="button"
-      color="inherit"
-      className={classes.text}
-    >
+    <Typography align="center" color="inherit" className={classes.text}>
       Gym Services
     </Typography>
   </AppBar>
