@@ -53,7 +53,7 @@ const Modal = ({
     <form className={classes.form} onSubmit={handleSubmit}>
       <DialogContent>
         <TextField
-          name="serviceType"
+          name="category"
           select
           required
           label="Categoría del servicio"
@@ -72,7 +72,7 @@ const Modal = ({
           }}
           InputLabelProps={{ shrink: true }}
           className={classes.textField}
-          value={form.serviceType}
+          value={form.category}
         >
           <option hidden value="" />
           {services.map(option => (
@@ -81,10 +81,10 @@ const Modal = ({
             </option>
           ))}
         </TextField>
-        {form.serviceType === "device" && (
+        {form.category === "device" && (
           <DeviceForm handleInput={handleInput} form={form} />
         )}
-        {form.serviceType === "field" && (
+        {form.category === "field" && (
           <FieldForm handleInput={handleInput} form={form} />
         )}
       </DialogContent>

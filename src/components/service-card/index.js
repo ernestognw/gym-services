@@ -20,43 +20,52 @@ const styles = theme => ({
   }
 });
 
-class RecipeReviewCard extends React.Component {
-  render() {
-    const { classes, service } = this.props;
-    return (
-      <Card className={classes.card}>
-        <CardHeader
-          action={
-            <IconButton>
-              <ClearIcon />
-            </IconButton>
-          }
-          title={service.descOrSport}
-          subheader={service.serviceKey}
+const ServiceCard = ({ classes, service, id, handleDelete }) => (
+  <Card className={classes.card}>
+    <CardHeader
+      action={
+        <IconButton onClick={() => handleDelete(id)}>
+          <ClearIcon />
+        </IconButton>
+      }
+      title={service.descOrSport}
+      subheader={`${service.type}-${service.serviceKey}`}
+    />
+    <List>
+      <ListItem>
+        <ListItemText
+          primary={`${service.maxTime} minutos`}
+          secondary="Tiempo máximo de reserva"
         />
-        <List>
-          <ListItem>
-            <ListItemText
-              primary={`${service.maxTime} minutos`}
-              secondary="Tiempo máximoo de reserva"
-            />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary={service.type} secondary="Tipo de servicio" />
-          </ListItem>
-          <ListItem>
-            <ListItemText primary={`$${service.cost} /hr.`} secondary="Costo" />
-          </ListItem>
-          <ListItem>
-            <ListItemText
-              primary={service.hasInstructor ? "Sí" : "No"}
-              secondary="¿Tiene instructor?"
-            />
-          </ListItem>
-        </List>
-      </Card>
-    );
-  }
-}
+      </ListItem>
+      <ListItem>
+        <ListItemText primary={service.type} secondary="Tipo de servicio" />
+      </ListItem>
+      <ListItem>
+        <ListItemText
+          primary={`$${service.cost} /${
+            service.category === "device" ? "15 min." : "hr."
+          }`}
+          secondary="Costo"
+        />
+      </ListItem>
+      {service.category === "device" ? (
+        <ListItem>
+          <ListItemText
+            primary={service.hasInstructor ? "Sí" : "No"}
+            secondary="¿Tiene instructor?"
+          />
+        </ListItem>
+      ) : (
+        <ListItem>
+          <ListItemText
+            primary={service.maxPeople}
+            secondary="Cantidad máxima de personas"
+          />
+        </ListItem>
+      )}
+    </List>
+  </Card>
+);
 
-export default withStyles(styles)(RecipeReviewCard);
+export default withStyles(styles)(ServiceCard);

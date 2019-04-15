@@ -102,6 +102,7 @@ const DeviceForm = ({ form, classes, handleInput }) => (
     <TextField
       required
       label="Costo"
+      type="number"
       onChange={handleInput}
       name="cost"
       value={form.cost}

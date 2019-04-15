@@ -1,8 +1,9 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import VerticalAlignBottomIcon from "@material-ui/icons/VerticalAlignBottom";
+import IconButton from "@material-ui/core/IconButton";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
@@ -25,9 +26,8 @@ const styles = theme => ({
   fabButton: {
     position: "absolute",
     zIndex: 1,
-    top: -30,
-    left: 0,
-    right: 0,
+    bottom: 30,
+    right: 30,
     margin: "0 auto"
   }
 });
@@ -35,6 +35,9 @@ const styles = theme => ({
 const BottomBar = ({ classes, toggleModal }) => (
   <AppBar position="fixed" color="primary" className={classes.appBar}>
     <Toolbar className={classes.toolbar}>
+      <IconButton color="inherit" aria-label="Open drawer">
+        <VerticalAlignBottomIcon />
+      </IconButton>
       <Tooltip
         title="Añadir servicio"
         aria-label="Añadir servicio"
@@ -50,9 +53,6 @@ const BottomBar = ({ classes, toggleModal }) => (
         </Fab>
       </Tooltip>
     </Toolbar>
-    <Typography align="center" color="inherit" className={classes.text}>
-      Gym Services
-    </Typography>
   </AppBar>
 );
 

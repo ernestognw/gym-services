@@ -1,12 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import BottomBar from "./components/bottom-bar";
+import TopBar from "./components/top-bar";
 
 const styles = theme => ({
-  root: {
-    display: "flex"
-  },
   appBarSpacer: {
     ...theme.mixins.toolbar,
     height: 100
@@ -19,14 +17,15 @@ const styles = theme => ({
 });
 
 const Layout = ({ classes, children, toggleModal }) => (
-  <div className={classes.root}>
+  <Fragment>
+    <TopBar />
     <CssBaseline />
     <main className={classes.content}>
       {children}
       <div className={classes.appBarSpacer} />
     </main>
     <BottomBar toggleModal={toggleModal} />
-  </div>
+  </Fragment>
 );
 
 export default withStyles(styles)(Layout);

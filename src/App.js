@@ -4,6 +4,7 @@ import Layout from "./components/layout";
 import ServiceCard from "./components/service-card";
 import Modal from "./components/modal";
 import "react-toastify/dist/ReactToastify.min.css";
+import EmptyState from "./components/empty-state";
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class App extends Component {
       modalOpen: false,
       services: [],
       inputForm: {
-        serviceType: "",
+        category: "",
         serviceKey: "",
         maxTime: "",
         type: "",
@@ -40,7 +41,7 @@ class App extends Component {
     this.setState({
       modalOpen: !modalOpen,
       inputForm: {
-        serviceType: "",
+        category: "",
         serviceKey: "",
         maxTime: "",
         type: "",
@@ -58,7 +59,7 @@ class App extends Component {
     this.setState({
       services: [...services, inputForm],
       inputForm: {
-        serviceType: "",
+        category: "",
         serviceKey: "",
         maxTime: "",
         type: "",
@@ -72,13 +73,27 @@ class App extends Component {
     toast.success("Servicio añadido correctamente");
   };
 
+  handleDelete = id => {
+    const { services } = this.state;
+    services.splice(id, 1);
+    this.setState({
+      services
+    });
+  };
+
   render() {
     const { services, modalOpen, inputForm } = this.state;
     return (
       <Layout toggleModal={this.toggleModal}>
         {services.map((service, id) => (
-          <ServiceCard key={id} service={service} />
+          <ServiceCard
+            key={id}
+            id={id}
+            service={service}
+            handleDelete={this.handleDelete}
+          />
         ))}
+        {services.length === 0 && <EmptyState />}
         <Modal
           handleInput={this.handleInput}
           handleSubmit={this.handleSubmit}
