@@ -11,7 +11,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 const styles = theme => ({
   card: {
     maxWidth: 400,
-    marginBottom: 20
+    marginBottom: 20,
+    marginRight: "auto",
+    marginLeft: "auto"
   },
   subtitle: {
     fontWeight: "bold"

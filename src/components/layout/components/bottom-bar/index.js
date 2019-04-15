@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import Tooltip from "@material-ui/core/Tooltip";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 
@@ -34,14 +35,20 @@ const styles = theme => ({
 const BottomBar = ({ classes, toggleModal }) => (
   <AppBar position="fixed" color="primary" className={classes.appBar}>
     <Toolbar className={classes.toolbar}>
-      <Fab
-        onClick={toggleModal}
-        color="secondary"
-        aria-label="Add"
-        className={classes.fabButton}
+      <Tooltip
+        title="Añadir servicio"
+        aria-label="Añadir servicio"
+        placement="top"
       >
-        <AddIcon />
-      </Fab>
+        <Fab
+          onClick={toggleModal}
+          color="secondary"
+          aria-label="Añadir servicio"
+          className={classes.fabButton}
+        >
+          <AddIcon />
+        </Fab>
+      </Tooltip>
     </Toolbar>
     <Typography align="center" color="inherit" className={classes.text}>
       Gym Services

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { ToastContainer, Slide, toast } from "react-toastify";
 import Layout from "./components/layout";
 import ServiceCard from "./components/service-card";
 import Modal from "./components/modal";
+import "react-toastify/dist/ReactToastify.min.css";
 
 class App extends Component {
   constructor(props) {
@@ -52,7 +54,22 @@ class App extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
+    const { services, inputForm } = this.state;
+    this.setState({
+      services: [...services, inputForm],
+      inputForm: {
+        serviceType: "",
+        serviceKey: "",
+        maxTime: "",
+        type: "",
+        cost: "",
+        hasInstructor: false,
+        maxPeople: "",
+        descOrSport: ""
+      }
+    });
+    this.toggleModal();
+    toast.success("Servicio añadido correctamente");
   };
 
   render() {
@@ -68,6 +85,17 @@ class App extends Component {
           form={inputForm}
           toggleModal={this.toggleModal}
           active={modalOpen}
+        />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          rtl={false}
+          pauseOnVisibilityChange={false}
+          draggable
+          pauseOnHover={false}
+          transition={Slide}
         />
       </Layout>
     );
