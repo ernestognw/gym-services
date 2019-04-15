@@ -66,7 +66,7 @@ const Modal = ({
             },
             startAdornment: (
               <InputAdornment position="start">
-                <LabelIcon />
+                <LabelIcon fontSize="small" />
               </InputAdornment>
             )
           }}

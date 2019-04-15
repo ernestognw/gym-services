@@ -5,7 +5,8 @@ const DialogContent = withStyles(theme => ({
   root: {
     margin: 0,
     width: "100%",
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing.unit,
+    paddingRight: theme.spacing.unit * 2,
     display: "flex",
     flexDirection: "column"
   }

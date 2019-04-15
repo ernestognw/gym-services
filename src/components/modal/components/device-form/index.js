@@ -51,7 +51,7 @@ const DeviceForm = ({ form, classes, handleInput }) => (
         },
         startAdornment: (
           <InputAdornment position="start">
-            <LocalOfferIcon />
+            <LocalOfferIcon fontSize="small" />
           </InputAdornment>
         )
       }}
@@ -78,7 +78,7 @@ const DeviceForm = ({ form, classes, handleInput }) => (
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
-            <TimerIcon />
+            <TimerIcon fontSize="small" />
           </InputAdornment>
         ),
         endAdornment: <InputAdornment position="end">mins.</InputAdornment>
@@ -111,7 +111,7 @@ const DeviceForm = ({ form, classes, handleInput }) => (
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
-            <AttachMoneyIcon />
+            <AttachMoneyIcon fontSize="small" />
           </InputAdornment>
         ),
         endAdornment: (
@@ -135,7 +135,7 @@ const DeviceForm = ({ form, classes, handleInput }) => (
         },
         startAdornment: (
           <InputAdornment position="start">
-            <AccessibilityIcon />
+            <AccessibilityIcon fontSize="small" />
           </InputAdornment>
         )
       }}
@@ -158,7 +158,7 @@ const DeviceForm = ({ form, classes, handleInput }) => (
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
-            <NotesIcon />
+            <NotesIcon fontSize="small" />
           </InputAdornment>
         )
       }}

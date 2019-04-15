@@ -28,7 +28,7 @@ const DialogTitle = withStyles(theme => ({
           className={classes.closeButton}
           onClick={onClose}
         >
-          <CloseIcon />
+          <CloseIcon fontSize="small" />
         </IconButton>
       )}
     </MuiDialogTitle>

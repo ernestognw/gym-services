@@ -1,7 +1,8 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import VerticalAlignBottomIcon from "@material-ui/icons/VerticalAlignBottom";
-import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -29,15 +30,27 @@ const styles = theme => ({
     bottom: 30,
     right: 30,
     margin: "0 auto"
+  },
+  downloadText: {
+    marginLeft: 5
   }
 });
 
-const BottomBar = ({ classes, toggleModal }) => (
+const BottomBar = ({ classes, toggleModal, empty, download }) => (
   <AppBar position="fixed" color="primary" className={classes.appBar}>
     <Toolbar className={classes.toolbar}>
-      <IconButton color="inherit" aria-label="Open drawer">
-        <VerticalAlignBottomIcon />
-      </IconButton>
+      {!empty && (
+        <Button onClick={download} color="inherit" aria-label="Open drawer">
+          <VerticalAlignBottomIcon fontSize="small" />
+          <Typography
+            className={classes.downloadText}
+            variant="button"
+            color="inherit"
+          >
+            Descargar .txt
+          </Typography>
+        </Button>
+      )}
       <Tooltip
         title="Añadir servicio"
         aria-label="Añadir servicio"
@@ -49,7 +62,7 @@ const BottomBar = ({ classes, toggleModal }) => (
           aria-label="Añadir servicio"
           className={classes.fabButton}
         >
-          <AddIcon />
+          <AddIcon fontSize="small" />
         </Fab>
       </Tooltip>
     </Toolbar>

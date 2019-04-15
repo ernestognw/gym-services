@@ -7,16 +7,17 @@ import TopBar from "./components/top-bar";
 const styles = theme => ({
   appBarSpacer: {
     ...theme.mixins.toolbar,
-    height: 100
+    height: 56
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    height: "100%"
+    height: "100%",
+    marginTop: 56
   }
 });
 
-const Layout = ({ classes, children, toggleModal }) => (
+const Layout = ({ classes, children, toggleModal, empty, download }) => (
   <Fragment>
     <TopBar />
     <CssBaseline />
@@ -24,7 +25,7 @@ const Layout = ({ classes, children, toggleModal }) => (
       {children}
       <div className={classes.appBarSpacer} />
     </main>
-    <BottomBar toggleModal={toggleModal} />
+    <BottomBar download={download} empty={empty} toggleModal={toggleModal} />
   </Fragment>
 );
 

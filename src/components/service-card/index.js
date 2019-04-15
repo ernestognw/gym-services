@@ -7,6 +7,11 @@ import ClearIcon from "@material-ui/icons/Clear";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import TimerIcon from "@material-ui/icons/Timer";
+import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+import AccessibilityIcon from "@material-ui/icons/Accessibility";
+import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 
 const styles = theme => ({
   card: {
@@ -25,7 +30,7 @@ const ServiceCard = ({ classes, service, id, handleDelete }) => (
     <CardHeader
       action={
         <IconButton onClick={() => handleDelete(id)}>
-          <ClearIcon />
+          <ClearIcon fontSize="small" />
         </IconButton>
       }
       title={service.descOrSport}
@@ -33,34 +38,54 @@ const ServiceCard = ({ classes, service, id, handleDelete }) => (
     />
     <List>
       <ListItem>
+        <ListItemIcon>
+          <TimerIcon fontSize="small" />
+        </ListItemIcon>
         <ListItemText
-          primary={`${service.maxTime} minutos`}
-          secondary="Tiempo máximo de reserva"
+          secondary={`${service.maxTime} minutos`}
+          primary="Tiempo máximo de reserva"
         />
       </ListItem>
       <ListItem>
-        <ListItemText primary={service.type} secondary="Tipo de servicio" />
+        <ListItemIcon>
+          <LocalOfferIcon fontSize="small" />
+        </ListItemIcon>
+        <ListItemText
+          secondary={service.type}
+          primary={`Tipo de ${
+            service.category === "device" ? "aparato" : "cancha"
+          }`}
+        />
       </ListItem>
       <ListItem>
+        <ListItemIcon>
+          <AttachMoneyIcon fontSize="small" />
+        </ListItemIcon>
         <ListItemText
-          primary={`$${service.cost} /${
+          secondary={`$${service.cost} /${
             service.category === "device" ? "15 min." : "hr."
           }`}
-          secondary="Costo"
+          primary="Costo"
         />
       </ListItem>
       {service.category === "device" ? (
         <ListItem>
+          <ListItemIcon>
+            <AccessibilityIcon fontSize="small" />
+          </ListItemIcon>
           <ListItemText
-            primary={service.hasInstructor ? "Sí" : "No"}
-            secondary="¿Tiene instructor?"
+            secondary={service.hasInstructor === "V" ? "Sí" : "No"}
+            primary="¿Tiene instructor?"
           />
         </ListItem>
       ) : (
         <ListItem>
+          <ListItemIcon>
+            <AccessibilityIcon fontSize="small" />
+          </ListItemIcon>
           <ListItemText
-            primary={service.maxPeople}
-            secondary="Cantidad máxima de personas"
+            secondary={service.maxPeople}
+            primary="Cantidad máxima de personas"
           />
         </ListItem>
       )}
