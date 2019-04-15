@@ -4,9 +4,9 @@ txt file generator of gym services, according to specifications of a c++ program
 
 This app creates the services input file
 
-![EMPTY](./static/SS-1.png)
-![FORM](./static/SS-2.png)
-![APP](./static/SS-3.png)
+![EMPTY](./src/static/SS-1.png)
+![FORM](./src/static/SS-2.png)
+![APP](./src/static/SS-3.png)
 
 ## How does it works?
 
