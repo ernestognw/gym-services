@@ -8,44 +8,67 @@ class App extends Component {
     super(props);
     this.state = {
       modalOpen: false,
-      services: [
-        {
-          infoType: "device",
-          title: "Escaladora",
-          maxTime: "50",
-          serviceKey: "C-002",
-          type: "C",
-          cost: "50",
-          hasInstructor: true
-        },
-        {
-          infoType: "device",
-          title: "Caminadora",
-          maxTime: "10",
-          serviceKey: "E-001",
-          type: "E",
-          cost: "60",
-          hasInstructor: false
-        }
-      ]
+      services: [],
+      inputForm: {
+        serviceType: "",
+        serviceKey: "",
+        maxTime: "",
+        type: "",
+        cost: "",
+        hasInstructor: false,
+        maxPeople: "",
+        descOrSport: ""
+      }
     };
   }
+
+  handleInput = event => {
+    const { target } = event;
+    const { inputForm } = this.state;
+    this.setState({
+      inputForm: {
+        ...inputForm,
+        [target.name]: target.value
+      }
+    });
+  };
 
   toggleModal = () => {
     const { modalOpen } = this.state;
     this.setState({
-      modalOpen: !modalOpen
+      modalOpen: !modalOpen,
+      inputForm: {
+        serviceType: "",
+        serviceKey: "",
+        maxTime: "",
+        type: "",
+        cost: "",
+        hasInstructor: false,
+        maxPeople: "",
+        descOrSport: ""
+      }
     });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(this.state);
+  };
+
   render() {
-    const { services, modalOpen } = this.state;
+    const { services, modalOpen, inputForm } = this.state;
     return (
       <Layout toggleModal={this.toggleModal}>
         {services.map((service, id) => (
-          <ServiceCard key={id} service={service} modalOpen={modalOpen} />
+          <ServiceCard key={id} service={service} />
         ))}
-        <Modal toggleModal={this.toggleModal} active={modalOpen} />
+        <Modal
+          handleInput={this.handleInput}
+          handleSubmit={this.handleSubmit}
+          form={inputForm}
+          toggleModal={this.toggleModal}
+          active={modalOpen}
+        />
       </Layout>
     );
   }

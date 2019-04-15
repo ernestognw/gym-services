@@ -4,7 +4,10 @@ import { withStyles } from "@material-ui/core/styles";
 const DialogContent = withStyles(theme => ({
   root: {
     margin: 0,
-    padding: theme.spacing.unit * 2
+    width: "100%",
+    padding: theme.spacing.unit * 2,
+    display: "flex",
+    flexDirection: "column"
   }
 }))(MuiDialogContent);
 

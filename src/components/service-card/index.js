@@ -29,10 +29,10 @@ class RecipeReviewCard extends React.Component {
               <ClearIcon />
             </IconButton>
           }
-          title={service.title}
+          title={service.descOrSport}
           subheader={service.serviceKey}
         />
-        <List component="nav">
+        <List>
           <ListItem>
             <ListItemText
               primary={`${service.maxTime} minutos`}
